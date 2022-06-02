@@ -17,18 +17,26 @@ personas puedan verlas.
     - modifiedAt
 
 [post]
--id
--idUser
--image
--text
--createdAt
--modifiedAt
+    -id
+    -idUser
+    -image
+    -text
+    -createdAt
+    -modifiedAt
 
 [commentarios]
--idUser
--text
--createdAt
--modifiedAt
+    -idUser
+    -text
+    -createdAt
+    -modifiedAt
+
+[perfil] ¿?
+    -id
+    -idUser
+    -image
+    -text
+    -createdAt
+    -modifiedAt
 
 # Endpoints clientes (usuarios anónimos)
 
