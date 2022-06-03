@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 
-const { singUp } = require('./controllers/user/singUp');
+const { singUp } = require('./controllers/users/singUp');
 
 const { PORT } = process.env;
 
@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
 });
 
 //endpoint POST [/singUp] Registro de usuario
-app.post('/user', singUp )
+app.post('/user', singUp);
 
 app.use((req, res) => {
     res.status(404).send({

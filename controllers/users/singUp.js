@@ -4,10 +4,8 @@ const { generateError } = require('../../helpers');
 
 const singUp = async (req, res, next) => {
     try {
-       
         const { email, password } = req.body;
 
-        
         if (!email || !password) {
             throw generateError('Faltan campos', 400);
         }
