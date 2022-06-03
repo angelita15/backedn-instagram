@@ -1,6 +1,3 @@
-const fs = require('fs/promises');
-const path = require('path');
-
 const generateError = (message, status) => {
     const error = new Error(message);
     error.statusCode = status;
@@ -10,3 +7,4 @@ const generateError = (message, status) => {
 module.exports = {
     generateError,
 };
+
