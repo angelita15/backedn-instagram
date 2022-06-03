@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
+
 const { singUp } = require('./controllers/user/singUp');
 
 const { PORT } = process.env;
@@ -12,6 +13,13 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 
+// controllers //
+
+const { loginUser } = require('./controllers/users/loginUser');
+
+app.post('/login', loginUser);
+
+// Middleware not found
 
 app.use((err, req, res, next) => {
     console.error(err);
