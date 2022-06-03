@@ -30,7 +30,7 @@ personas puedan verlas.
     -createdAt
     -modifiedAt
 
-[perfil] ¿?
+[perfil] 
     -id
     -idUser
     -image

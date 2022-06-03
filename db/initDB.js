@@ -1,11 +1,10 @@
 const getConnection = require('./getConnection');
 
 async function main() {
-    // Variable que almacenará una conexión libre de la base de datos.
+    
     let connection;
 
     try {
-        // Obtenemos una conexión libre.
         connection = await getConnection();
 
         console.log('Borrando tablas existentes...');
@@ -41,13 +40,12 @@ async function main() {
     } catch (err) {
         console.error(err);
     } finally {
-        // Si existe una conexión la liberamos.
+
         if (connection) connection.release();
 
-        // Cerramos el proceso actual.
+        
         process.exit();
     }
 }
 
-// Llamamos a la función principal.
 main();
