@@ -40,13 +40,19 @@ personas puedan verlas.
 
 # Endpoints clientes (usuarios anónimos)
 
-POST [/users] - Registro de usuario
+- GET [/userPerfil] - mostrar el perfil de usuarios
 
-POST [/login] - Login de usuario (devuelve token)
+- GET [/post] - mostras ULTIMAS publicaciones 
+
+- GET [/post/:idPost] -buscar una publicacion 
+
+- POST [/login] - inicio sesion (devuelve token)
+ 
+- POST [/signUp] Registro de usuario
+
 
 # Endpoints (usuarios normales registrado)
 
-GET [/users/:id] - Devuelve información de usuario
 
 POST [/post] - Permite crear un post (necesita cabecera con token)
 
@@ -54,4 +60,12 @@ GET [/post] - Lista todos los post
 
 GET [/post/:idPost] - Devuelve un post
 
-DELETE [/post/:id] - Borra un post solo si eres quien lo creó (necesita cabecera con token)
+DELETE [/post/:id] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
+
+GET [/profile] - crear perfil usuario 
+
+PUT [/updateProfile] - Modificar perfil de usuario 
+
+POST [/comment/] ¿?
+
+like¿?
