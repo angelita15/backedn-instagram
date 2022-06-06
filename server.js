@@ -13,10 +13,12 @@ app.use(express.json());
 
 // controllers //
 
-const { loginUser, signUp } = require('./controllers/users');
+const { loginUser, signUp, getUser } = require('./controllers/users');
 
 
 app.post('/login', loginUser); // ruta login
+
+app.get('/user/:idUser', getUser)
 
 // Middleware not found
 

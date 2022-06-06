@@ -39,7 +39,7 @@ personas puedan verlas.
 
 # Endpoints clientes (usuarios anónimos)
 
--   GET [/user] - mostrar el perfil de usuarios  noseria solo user 
+-   GET [/user] - mostrar el perfil de usuarios  noseria solo user  
  
 -   GET [/post] - mostras ULTIMAS publicaciones
 
@@ -47,7 +47,7 @@ personas puedan verlas.
 
 -   POST [/login] - inicio sesion (devuelve token)
 
--   POST [/signUp] Registro de usuario
+-   POST [/signUp] Registro de usuario  
 
 # Endpoints (usuarios normales registrado)
 
