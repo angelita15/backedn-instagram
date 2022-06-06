@@ -3,8 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 
-const { singUp } = require('./controllers/users/singUp');
-
 const { PORT } = process.env;
 
 const app = express();
@@ -15,9 +13,10 @@ app.use(express.json());
 
 // controllers //
 
-const { loginUser } = require('./controllers/users/loginUser');
+const { loginUser, signUp } = require('./controllers/users');
 
-app.post('/login', loginUser);
+
+app.post('/login', loginUser); // ruta login
 
 // Middleware not found
 
@@ -31,7 +30,7 @@ app.use((err, req, res, next) => {
 });
 
 //endpoint POST [/singUp] Registro de usuario
-app.post('/user', singUp);
+app.post('/user', signUp);   //ruta crear usuario 
 
 app.use((req, res) => {
     res.status(404).send({

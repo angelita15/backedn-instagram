@@ -3,7 +3,7 @@ const getConnection = require('../getConnection');
 
 const { generateError } = require('../../helpers')
 
-const singUptUserQuery = async (email, password) => {
+const signUptUserQuery = async (email, password) => {
     let connection;
 
     try {
@@ -34,5 +34,5 @@ const singUptUserQuery = async (email, password) => {
     }
 };
 
-module.exports = singUptUserQuery;
+module.exports = signUptUserQuery;
 

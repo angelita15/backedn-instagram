@@ -1,8 +1,8 @@
-const singUptUserQuery = require('../../db/userQueris/userQueriesSingUp');
+const signUptUserQuery = require('../../db/userQueries/userQueriesSignUp');
 
 const { generateError } = require('../../helpers');
 
-const singUp = async (req, res, next) => {
+const signUp = async (req, res, next) => {
     try {
         const { email, password } = req.body;
 
@@ -10,7 +10,7 @@ const singUp = async (req, res, next) => {
             throw generateError('Faltan campos', 400);
         }
 
-        const idUser = await singUptUserQuery(email, password);
+        const idUser = await signUptUserQuery(email, password);
 
         res.send({
             status: 'ok',
@@ -21,4 +21,4 @@ const singUp = async (req, res, next) => {
     }
 };
 
-module.exports = singUp;
+module.exports = signUp;
