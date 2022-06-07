@@ -50,7 +50,7 @@ personas puedan verlas.
 
 # Endpoints (usuarios normales registrado)
 
-POST [/post] - Permite crear un post (necesita cabecera con token) (✅ ?) (Falta comprobacion)
+POST [/post] - Permite crear un post (necesita cabecera con token) (✅)
 
 DELETE [/post/:id] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
 

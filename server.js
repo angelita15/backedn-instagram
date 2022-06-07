@@ -16,7 +16,7 @@ app.use(fileUpload());
 
 const authUser = require('./middlewares/authUser');
 
-// controllers //
+// controllers user //
 
 const { loginUser, signUp, getUser } = require('./controllers/users');
 
@@ -39,10 +39,14 @@ app.use((err, req, res, next) => {
 //endpoint POST [/singUp] Registro de usuario
 app.post('/user', signUp); //ruta crear usuario
 
-// endpoints Posts
-const { newPost } = require('./controllers/posts/');
+// controlers posts
+const { newPost, listPosts, } = require('./controllers/posts/');
 
-app.post('/posts', authUser, newPost);
+
+// endpoints Posts
+app.post('/posts', authUser, newPost);  // --> crea un post
+
+app.get('/posts', listPosts)   // --> lista de todos los posts
 
 app.use((req, res) => {
     res.status(404).send({
