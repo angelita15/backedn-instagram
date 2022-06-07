@@ -40,9 +40,11 @@ app.use((err, req, res, next) => {
 app.post('/user', signUp); //ruta crear usuario
 
 // endpoints Posts
-const { newPost } = require('./controllers/posts/');
+const { newPost, getPost } = require('./controllers/posts/');
 
 app.post('/posts', authUser, newPost);
+
+app.get('/posts/:idPost', getPost);
 
 app.use((req, res) => {
     res.status(404).send({
