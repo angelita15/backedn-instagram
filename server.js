@@ -39,14 +39,15 @@ app.use((err, req, res, next) => {
 //endpoint POST [/singUp] Registro de usuario
 app.post('/user', signUp); //ruta crear usuario
 
-// controlers posts
-const { newPost, listPosts, } = require('./controllers/posts/');
 
+// Controllers Posts
+const { newPost, getPost, listPosts } = require('./controllers/posts/');
 
-// endpoints Posts
 app.post('/posts', authUser, newPost);  // --> crea un post
 
 app.get('/posts', listPosts)   // --> lista de todos los posts
+
+app.get('/posts/:idPost', getPost);
 
 app.use((req, res) => {
     res.status(404).send({
