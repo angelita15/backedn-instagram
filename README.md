@@ -40,9 +40,9 @@ personas puedan verlas.
 
 -   GET [/user] - mostrar el perfil de usuarios noseria solo user ✅
 
--   GET [/post] - mostras ULTIMAS publicaciones
+-   GET [/post] - mostras ULTIMAS publicaciones ✅
 
--   GET [/post/:idPost] -buscar una publicacion
+-   GET [/post/:idPost] -buscar una publicacion ✅
 
 -   POST [/login] - inicio sesion (devuelve token) ✅
 
@@ -52,12 +52,12 @@ personas puedan verlas.
 
 POST [/post] - Permite crear un post (necesita cabecera con token) (✅)
 
-DELETE [/post/:id] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
+DELETE [/post/:idPost] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
 
-PUT [/user/id:user] - Modificar perfil de usuario
+PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL 
 
-POST [/post/id:post/comment] crea un comentario
+POST [/post/:idPost/comment] crea un comentario  OPCIONAL 
 
-post [/post/:idPost/like] darle un like
+post [/post/:idPost/like] darle un like 
 
 usurio y post y si se necesita token
