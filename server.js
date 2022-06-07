@@ -43,6 +43,8 @@ app.post('/user', signUp); //ruta crear usuario
 // Controllers Posts
 const { newPost, getPost, listPosts } = require('./controllers/posts/');
 
+
+// endpoint posts
 app.post('/posts', authUser, newPost);  // --> crea un post
 
 app.get('/posts', listPosts)   // --> lista de todos los posts

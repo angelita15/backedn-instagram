@@ -10,11 +10,11 @@ const selectPostByIdQuery = async (idPost) => {
 
         const [posts] = await connection.query(
             `
-            SELECT T.id, T.idUser, T.text, T.image, T.createdAt, U.email
-            FROM posts T
-            LEFT JOIN users T
-            ON T.idUser = U.id
-            WHERE T.id = ?
+            SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.email
+            FROM posts P
+            LEFT JOIN users U
+            ON P.idUser = U.id
+            WHERE P.id = ?
             `,
             [idPost]
         );
