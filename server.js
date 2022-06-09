@@ -18,7 +18,9 @@ const authUser = require('./middlewares/authUser');
 
 // controllers user //
 
-const { loginUser, signUp, getUser } = require('./controllers/users');
+const { loginUser, signUp, getUser, } = require('./controllers/users');
+
+const newLike = require('./controllers/likes')
 
 app.post('/login', loginUser); // ruta login
 
@@ -50,6 +52,9 @@ app.post('/posts', authUser, newPost);  // --> crea un post
 app.get('/posts', listPosts)   // --> lista de todos los posts
 
 app.get('/posts/:idPost', getPost);
+
+
+app.post('/post/:idPost/like', authUser, newLike) // --> like
 
 app.use((req, res) => {
     res.status(404).send({

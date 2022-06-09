@@ -58,6 +58,8 @@ PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL
 
 POST [/post/:idPost/comment] crea un comentario  OPCIONAL 
 
-post [/post/:idPost/like] darle un like 
+post [/post/:idPost/like] darle un like  
+
+
 
 usurio y post y si se necesita token

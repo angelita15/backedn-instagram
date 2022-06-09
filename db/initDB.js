@@ -1,16 +1,16 @@
 const getConnection = require('./getConnection');
 
 async function main() {
-    
+
     let connection;
 
     try {
         connection = await getConnection();
 
         console.log('Borrando tablas existentes...');
-
-        await connection.query('DROP TABLE IF EXISTS users');
         await connection.query('DROP TABLE IF EXISTS posts');
+        await connection.query('DROP TABLE IF EXISTS users');
+
 
         console.log('Creando tablas...');
 
@@ -19,7 +19,7 @@ async function main() {
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                modifiedAt TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+                modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
@@ -31,10 +31,22 @@ async function main() {
                 FOREIGN KEY (idUser) REFERENCES users(id),
                 text VARCHAR(280) NOT NULL,
                 image VARCHAR(100),
-                modifiedAt TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+                modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
+
+        await connection.query(`
+        CREATE TABLE userVotes (
+            id INTEGER PRIMARY KEY AUTO_INCREMENT,
+            idUser INTEGER NOT NULL,
+            idPost INTEGER NOT NULL,
+            FOREIGN KEY (idUser) REFERENCES users(id),
+            FOREIGN KEY (idPost) REFERENCES posts(id),
+            vote BOOLEAN DEFAULT true,
+            modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`)
 
         console.log('¡Tablas creadas!');
     } catch (err) {
@@ -43,7 +55,7 @@ async function main() {
 
         if (connection) connection.release();
 
-        
+
         process.exit();
     }
 }

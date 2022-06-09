@@ -33,7 +33,7 @@ const newPost = async (req, res, next) => {
             await sharpImg.toFile(imgPath);
         }
 
-        insertPostQuery(req.idUser, text, imgName);
+        await insertPostQuery(req.idUser, text, imgName);
 
         res.send({
             status: 'Ok',
