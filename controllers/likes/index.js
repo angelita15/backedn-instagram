@@ -1,3 +1,3 @@
-const newLike = require('./newLikes')
+const newLike = require('./newLikes');
 
-module.exports = newLike
+module.exports = newLike;

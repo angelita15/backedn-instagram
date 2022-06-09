@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const selectUserByEmailQuery = require('../../db/userQueries/selectUserByEmailQuery');
-
 const { generateError } = require('../../helpers');
 
 const loginUser = async (req, res, next) => {
@@ -12,22 +11,20 @@ const loginUser = async (req, res, next) => {
             throw generateError('Faltan campos', 400);
         }
 
-        // We get the user by email
+        // We get the user by email //
         const user = await selectUserByEmailQuery(email);
 
-        // Checking if password is correct
+        // Checking if password is correct //
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
             await generateError('Contraseña incorrecta', 401);
         }
 
-        // Información que queremos guardar en el token.
         const payload = {
             id: user.id,
         };
 
-        // Firmamos el token.
         const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '30d',
         });
@@ -43,4 +40,4 @@ const loginUser = async (req, res, next) => {
     }
 };
 
-module.exports =  loginUser;
+module.exports = loginUser;

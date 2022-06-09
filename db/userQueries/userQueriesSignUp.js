@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const getConnection = require('../getConnection');
-
-const { generateError } = require('../../helpers')
+const { generateError } = require('../../helpers');
 
 const signUptUserQuery = async (email, password) => {
     let connection;
@@ -35,4 +34,3 @@ const signUptUserQuery = async (email, password) => {
 };
 
 module.exports = signUptUserQuery;
-

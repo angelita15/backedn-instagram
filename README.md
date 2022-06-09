@@ -54,12 +54,8 @@ POST [/post] - Permite crear un post (necesita cabecera con token) (✅)
 
 DELETE [/post/:idPost] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
 
-PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL 
+PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL
 
-POST [/post/:idPost/comment] crea un comentario  OPCIONAL 
+POST [/post/:idPost/comment] crea un comentario OPCIONAL
 
-post [/post/:idPost/like] darle un like  
-
-
-
-usurio y post y si se necesita token
+post [/post/:idPost/like] darle un like ✅

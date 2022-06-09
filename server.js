@@ -14,20 +14,44 @@ app.use(express.json());
 
 app.use(fileUpload());
 
+/* ###### Middlewares Authorization ########*/
+
 const authUser = require('./middlewares/authUser');
 
-// controllers user //
+/* ###### Endpoints USERS  ########*/
 
-const { loginUser, signUp, getUser, } = require('./controllers/users');
+const { loginUser, signUp, getUser } = require('./controllers/users');
 
-const newLike = require('./controllers/likes')
+// Registro de nuevo usuario //
+app.post('/user', signUp);
 
-app.post('/login', loginUser); // ruta login
+// Login de usuario //
+app.post('/login', loginUser);
 
+// Obtenemos información de un usuario //
 app.get('/user/:idUser', getUser);
 
-// Middleware not found
+/* ###### Endpoints POSTS  ########*/
 
+const { newPost, getPost, listPosts } = require('./controllers/posts/');
+
+// Crear nuevo post //
+app.post('/posts', authUser, newPost);
+
+// Obtenemos todos los posts //
+app.get('/posts', listPosts);
+
+// Obtenemos post en específico con una ID //
+app.get('/posts/:idPost', getPost);
+
+/* ###### Endpoints Likes  ########*/
+
+const newLike = require('./controllers/likes');
+
+// Función de poner y quitar like //
+app.post('/post/:idPost/like', authUser, newLike);
+
+/* ###### Middlewares Error ########*/
 app.use((err, req, res, next) => {
     console.error(err);
 
@@ -36,26 +60,8 @@ app.use((err, req, res, next) => {
         message: err.message,
     });
 });
-/////////////////////////////
 
-//endpoint POST [/singUp] Registro de usuario
-app.post('/user', signUp); //ruta crear usuario
-
-
-// Controllers Posts
-const { newPost, getPost, listPosts } = require('./controllers/posts/');
-
-
-// endpoint posts
-app.post('/posts', authUser, newPost);  // --> crea un post
-
-app.get('/posts', listPosts)   // --> lista de todos los posts
-
-app.get('/posts/:idPost', getPost);
-
-
-app.post('/post/:idPost/like', authUser, newLike) // --> like
-
+/* ###### Middlewares Not Found ########*/
 app.use((req, res) => {
     res.status(404).send({
         status: 'error',

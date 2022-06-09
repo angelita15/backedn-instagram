@@ -13,7 +13,7 @@ const selectAllPostsQuery = async (keyword) => {
                 `
                     SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.email
                     FROM posts P
-                    LEFT JOIN users U 
+                    LEFT JOIN users U
                     ON P.idUser = U.id
                     WHERE P.text LIKE ?
                     ORDER BY P.createdAt DESC
@@ -25,7 +25,7 @@ const selectAllPostsQuery = async (keyword) => {
                 `
                     SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.email
                     FROM posts P
-                    LEFT JOIN users U 
+                    LEFT JOIN users U
                     ON P.idUser = U.id
                     ORDER BY P.createdAt DESC
                 `

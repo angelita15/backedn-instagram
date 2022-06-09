@@ -1,7 +1,6 @@
 const getConnection = require('./getConnection');
 
 async function main() {
-
     let connection;
 
     try {
@@ -10,7 +9,6 @@ async function main() {
         console.log('Borrando tablas existentes...');
         await connection.query('DROP TABLE IF EXISTS posts');
         await connection.query('DROP TABLE IF EXISTS users');
-
 
         console.log('Creando tablas...');
 
@@ -46,15 +44,13 @@ async function main() {
             vote BOOLEAN DEFAULT true,
             modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-        )`)
+        )`);
 
         console.log('¡Tablas creadas!');
     } catch (err) {
         console.error(err);
     } finally {
-
         if (connection) connection.release();
-
 
         process.exit();
     }

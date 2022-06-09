@@ -3,7 +3,6 @@ const sharp = require('sharp');
 const insertPostQuery = require('../../db/postQueries/insertPostQuery');
 const { nanoid } = require('nanoid');
 const { generateError, createPathIfNotExist } = require('../../helpers');
-// Require npm i sharp and nanoid
 
 const newPost = async (req, res, next) => {
     try {
