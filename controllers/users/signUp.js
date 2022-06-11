@@ -1,5 +1,4 @@
 const signUptUserQuery = require('../../db/userQueries/userQueriesSignUp');
-
 const { generateError } = require('../../helpers');
 
 const signUp = async (req, res, next) => {

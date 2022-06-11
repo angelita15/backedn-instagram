@@ -4,7 +4,7 @@ const listPosts = async (req, res, next) => {
     try {
         const { keyword } = req.query;
 
-        const  posts = await selectAllPostsQuery(keyword);
+        const posts = await selectAllPostsQuery(keyword);
 
         res.send({
             status: 'ok',

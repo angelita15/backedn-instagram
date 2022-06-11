@@ -2,9 +2,9 @@ const getConnection = require('../getConnection');
 
 const insertLikeQuery = async (idPost, idUser) => {
     let connection;
-    console.log(idPost, idUser)
+    console.log(idPost, idUser);
     try {
-        connection = await getConnection()
+        connection = await getConnection();
 
         const [userVotes] = await connection.query(
             `SELECT vote FROM userVotes WHERE idUser = ? AND idPost =?`,
@@ -14,22 +14,17 @@ const insertLikeQuery = async (idPost, idUser) => {
             await connection.query(
                 `INSERT INTO userVotes (idUser, idPost) VALUES (?, ?)`,
                 [idUser, idPost]
-            )
+            );
             return true;
         } else {
             await connection.query(
                 `UPDATE userVotes SET vote = ? WHERE idUser = ? AND idPost =?`,
                 [!userVotes[0].vote, idUser, idPost]
-            )
-            return !userVotes[0].vote
+            );
+            return !userVotes[0].vote;
         }
-
-
     } finally {
-        if (connection) connection.release()
-
+        if (connection) connection.release();
     }
-
-
-}
+};
 module.exports = insertLikeQuery;

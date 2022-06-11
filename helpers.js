@@ -7,10 +7,6 @@ const generateError = (message, status) => {
     return error;
 };
 
-/**
- * If the path doesn't exist, create it
- * @param path - The path to the directory you want to create.
- */
 const createPathIfNotExist = async (path) => {
     try {
         await fs.access(path);
@@ -18,8 +14,6 @@ const createPathIfNotExist = async (path) => {
         await fs.mkdir(path);
     }
 };
-
-
 
 module.exports = {
     generateError,
