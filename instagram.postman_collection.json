@@ -43,14 +43,6 @@
 			"response": []
 		},
 		{
-			"name": "new post",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
 			"name": "list post",
 			"request": {
 				"method": "GET",
@@ -68,6 +60,14 @@
 		},
 		{
 			"name": "newLike",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "new post",
 			"request": {
 				"method": "GET",
 				"header": []

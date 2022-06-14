@@ -1,6 +1,6 @@
 const getConnection = require('../getConnection');
 
-const insertPostQuery = async (idUser, text, image = '') => {
+const insertPostQuery = async (idUser, text, image) => {
     let connection;
 
     try {
