@@ -6,7 +6,7 @@ const newLike = async (req, res, next) => {
 
         const vote = await insertLikeQuery(idPost, req.idUser);
 
-        const message = vote ? 'like creado' : 'like eliminado';
+        const message = vote ? 'Like creado' : 'Like eliminado';
 
         res.send({
             status: 'ok',

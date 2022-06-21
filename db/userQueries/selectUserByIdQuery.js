@@ -3,8 +3,10 @@ const { generateError } = require('../../helpers');
 
 const selectUserById = async (idUser) => {
     let Connection;
+
     try {
         Connection = await getConnection();
+
         const [users] = await Connection.query(
             `SELECT id, email, createdAt FROM users WHERE id = ?`,
             [idUser]

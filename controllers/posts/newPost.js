@@ -17,10 +17,7 @@ const newPost = async (req, res, next) => {
         }
 
         if (!image) {
-            throw generateError(
-                'Needs image',
-                400
-            );
+            throw generateError('Needs image', 400);
         }
 
         let imgName;
