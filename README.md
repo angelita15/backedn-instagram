@@ -59,3 +59,9 @@ PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL
 POST [/post/:idPost/comment] crea un comentario OPCIONAL
 
 post [/post/:idPost/like] darle un like ✅
+
+
+# RUTAS
+[/] home page
+[/login] 
+[/registro]

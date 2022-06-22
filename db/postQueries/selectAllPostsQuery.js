@@ -11,7 +11,7 @@ const selectAllPostsQuery = async (keyword) => {
         if (keyword) {
             [posts] = await connection.query(
                 `
-                    SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.email
+                    SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.username
                     FROM posts P
                     LEFT JOIN users U
                     ON P.idUser = U.id
@@ -23,7 +23,7 @@ const selectAllPostsQuery = async (keyword) => {
         } else {
             [posts] = await connection.query(
                 `
-                    SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.email
+                    SELECT P.id, P.idUser, P.text, P.image, P.createdAt, U.username
                     FROM posts P
                     LEFT JOIN users U
                     ON P.idUser = U.id

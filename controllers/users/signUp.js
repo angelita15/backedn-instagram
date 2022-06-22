@@ -3,13 +3,13 @@ const { generateError } = require('../../helpers');
 
 const signUp = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, username, password, } = req.body;
 
-        if (!email || !password) {
+        if (!email || !username || !password) {
             throw generateError('Faltan campos', 400);
         }
 
-        const idUser = await signUptUserQuery(email, password);
+        const idUser = await signUptUserQuery(email, username, password);
 
         res.send({
             status: 'ok',

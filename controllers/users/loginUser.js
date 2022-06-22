@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const selectUserByEmailQuery = require('../../db/userQueries/selectUserByEmailQuery');
+const selectUserByUserNameQuery = require('../../db/userQueries/selectUserByUserNameQuery');
 const { generateError } = require('../../helpers');
 
 const loginUser = async (req, res, next) => {
@@ -11,8 +11,8 @@ const loginUser = async (req, res, next) => {
             throw generateError('Faltan campos', 400);
         }
 
-        // We get the user by email //
-        const user = await selectUserByEmailQuery(email);
+        // We get the user by username  //
+        const user = await selectUserByUserNameQuery(email);
 
         // Checking if password is correct //
         const validPassword = await bcrypt.compare(password, user.password);

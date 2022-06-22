@@ -1,7 +1,7 @@
 const getConnection = require('../getConnection');
 const { generateError } = require('../../helpers');
 
-const selectUserByEmailQuery = async (email) => {
+const selectUserByUserNameQuery = async (email) => {
     let connection;
 
     try {
@@ -22,4 +22,4 @@ const selectUserByEmailQuery = async (email) => {
     }
 };
 
-module.exports = selectUserByEmailQuery;
+module.exports = selectUserByUserNameQuery;

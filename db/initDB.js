@@ -7,9 +7,11 @@ async function main() {
         connection = await getConnection();
 
         console.log('Borrando tablas existentes...');
+        await connection.query('DROP TABLE IF EXISTS userVotes');
         await connection.query('DROP TABLE IF EXISTS posts');
         await connection.query('DROP TABLE IF EXISTS users');
-        await connection.query('DROP TABLE IF EXISTS userVotes');
+
+
 
         console.log('Creando tablas...');
 
@@ -17,6 +19,7 @@ async function main() {
             CREATE TABLE users (
                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 email VARCHAR(100) UNIQUE NOT NULL,
+                username VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(100) NOT NULL,
                 modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
