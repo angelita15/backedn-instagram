@@ -17,6 +17,7 @@ app.use(fileUpload());
 /* ###### Middlewares Authorization ########*/
 
 const authUser = require('./middlewares/authUser');
+const postExist = require('./middlewares/postExist');
 
 /* ###### Endpoints USERS  ########*/
 
@@ -49,7 +50,7 @@ app.get('/posts/:idPost', getPost);
 const newLike = require('./controllers/likes');
 
 // Add or remove like //
-app.post('/posts/:idPost/like', authUser, newLike);
+app.post('/posts/:idPost/like', authUser, postExist, newLike);
 
 /* ###### Middlewares Error ########*/
 app.use((err, req, res, next) => {

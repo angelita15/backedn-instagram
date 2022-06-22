@@ -8,22 +8,25 @@ personas puedan verlas.
 [users] - usuario registrado
 
     - id
-    - name
+    - username
     - email
     - password
     - createdAt
     - modifiedAt
 
-[post]
+[posts]
 -id
 -idUser
+-username
 -image
 -text
+-likes
 -createdAt
 -modifiedAt
 
-[commentarios]
+[comentarios]
 -idUser
+-username
 -text
 -createdAt
 -modifiedAt
@@ -31,6 +34,7 @@ personas puedan verlas.
 [perfil]
 -id
 -idUser
+-username
 -image
 -text
 -createdAt
@@ -38,30 +42,30 @@ personas puedan verlas.
 
 # Endpoints clientes (usuarios anónimos)
 
--   GET [/user] - mostrar el perfil de usuarios noseria solo user ✅
+-   GET [/users/:idUser] - Mostrar el perfil de usuario ✅
 
--   GET [/post] - mostras ULTIMAS publicaciones ✅
+-   GET [/posts] - Mostrar ÚLTIMAS publicaciones ✅
 
--   GET [/post/:idPost] -buscar una publicacion ✅
+-   GET [/posts/:idPost] - Buscar una publicacion ✅
 
--   POST [/login] - inicio sesion (devuelve token) ✅
+-   POST [/login] - Inicio sesión (devuelve token) ✅
 
--   POST [/signUp] Registro de usuario ✅
+-   POST [/users] - Registro de usuario ✅
 
 # Endpoints (usuarios normales registrado)
 
-POST [/post] - Permite crear un post (necesita cabecera con token) (✅)
+POST [/posts] - Permite crear un post (necesita cabecera con token) (✅)
 
-DELETE [/post/:idPost] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
+DELETE [/posts/:idPost] - Borra un post solo si eres quien lo creó (necesita cabecera con token) (OPCIONAL)
 
-PUT [/user/:idUser] - Modificar perfil de usuario OPCIONAL
+PUT [/users/:idUser] - Modificar perfil de usuario OPCIONAL
 
-POST [/post/:idPost/comment] crea un comentario OPCIONAL
+POST [/posts/:idPost/comment] Crea un comentario OPCIONAL
 
-post [/post/:idPost/like] darle un like ✅
-
+POST [/posts/:idPost/like] Dar/Quitar un like ✅
 
 # RUTAS
+
 [/] home page
-[/login] 
+[/login]
 [/registro]
