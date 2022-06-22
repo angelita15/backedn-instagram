@@ -22,33 +22,33 @@ const authUser = require('./middlewares/authUser');
 
 const { loginUser, signUp, getUser } = require('./controllers/users');
 
-// Registro de nuevo usuario //
+// New user registration //
 app.post('/users', signUp);
 
-// Login de usuario //
+// User Log in //
 app.post('/login', loginUser);
 
-// Obtenemos información de un usuario //
+// We get information from a user //
 app.get('/users/:idUser', getUser);
 
 /* ###### Endpoints POSTS  ########*/
 
 const { newPost, getPost, listPosts } = require('./controllers/posts/');
 
-// Crear nuevo post //
+// Create new post //
 app.post('/posts', authUser, newPost);
 
-// Obtenemos todos los posts //
+// We get all the posts //
 app.get('/posts', listPosts);
 
-// Obtenemos post en específico con una ID //
+// We obtain a specific post with an ID //
 app.get('/posts/:idPost', getPost);
 
 /* ###### Endpoints Likes  ########*/
 
 const newLike = require('./controllers/likes');
 
-// Función de poner y quitar like //
+// Add or remove like //
 app.post('/posts/:idPost/like', authUser, newLike);
 
 /* ###### Middlewares Error ########*/
