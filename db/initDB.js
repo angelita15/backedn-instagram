@@ -9,6 +9,7 @@ async function main() {
         console.log('Borrando tablas existentes...');
         await connection.query('DROP TABLE IF EXISTS posts');
         await connection.query('DROP TABLE IF EXISTS users');
+        await connection.query('DROP TABLE IF EXISTS userVotes');
 
         console.log('Creando tablas...');
 
