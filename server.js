@@ -4,6 +4,8 @@ const express = require('express');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 
+const cors = require('cors');
+
 const { PORT } = process.env;
 
 const app = express();
@@ -13,6 +15,12 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use(fileUpload());
+
+app.use(
+    cors({
+        origin: '*',
+    })
+);
 
 /* ###### Middlewares Authorization ########*/
 
