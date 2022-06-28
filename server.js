@@ -16,6 +16,8 @@ app.use(express.json());
 
 app.use(fileUpload());
 
+app.use(express.static('uploads'));
+
 app.use(
     cors({
         origin: '*',
