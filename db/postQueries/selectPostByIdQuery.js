@@ -1,7 +1,7 @@
 const getConnection = require('../getConnection');
 const { generateError } = require('../../helpers');
 
-const selectPostByIdQuery = async (idPost) => {
+const selectPostByIdQuery = async (idPost, idUser ) => {
     let connection;
 
     try {
@@ -18,7 +18,7 @@ const selectPostByIdQuery = async (idPost) => {
             WHERE P.id = ?
             GROUP BY P.id
             `,
-            [idPost]
+            [idUser, idPost]
         );
 
         if (posts.length < 1) {
