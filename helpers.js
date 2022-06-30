@@ -14,8 +14,20 @@ const createPathIfNotExist = async (path) => {
         await fs.mkdir(path);
     }
 };
+const deletePhoto = async (photoName) => {
+    try {
+       
+        const photoPath = path.join(__dirname, 'uploads', photoName);
+
+       
+        await fs.unlink(photoPath);
+    } catch {
+        throw new Error('Error al eliminar la imagen del servidor');
+    }
+};
 
 module.exports = {
     generateError,
     createPathIfNotExist,
+    deletePhoto,
 };
