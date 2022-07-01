@@ -47,7 +47,9 @@ async function main() {
             FOREIGN KEY (idPost) REFERENCES posts(id),
             vote BOOLEAN DEFAULT true,
             FOREIGN KEY (idPost) REFERENCES posts (id) ON DELETE CASCADE,
+            FOREIGN KEY (idPost) REFERENCES posts (id) ON DELETE CASCADE,
             modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+            
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
 
