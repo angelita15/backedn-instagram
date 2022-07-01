@@ -1,23 +1,19 @@
 const selectPostByIdQuery = require('../../db/postQueries/selectPostByIdQuery');
-const deletePostQuery = require('../../db/postQueries/deletePostQuery')
+const deletePostQuery = require('../../db/postQueries/deletePostQuery');
 
 const { generateError, deletePhoto } = require('../../helpers');
 
 const deletePost = async (req, res, next) => {
     try {
+        const { idUser } = req;
         const { idPost } = req.params;
 
-        const { idUser } = req;
+        const post = await selectPostByIdQuery(idPost, idUser);
 
-      
-        const post = await selectPostByIdQuery(idUser, idPost);
-
-   
         if (idUser !== post.idUser) {
             throw generateError('No tienes suficientes permisos', 401);
         }
 
-     
         if (post.image) {
             await deletePhoto(post.image);
         }
