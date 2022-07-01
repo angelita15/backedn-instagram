@@ -1,7 +1,7 @@
 const getConnection = require('../getConnection');
 const { generateError } = require('../../helpers');
 
-const selectPostByIdQuery = async ( idUser, idPost ) => {
+const selectPostByIdQuery = async (idUser, idPost) => {
     let connection;
 
     try {
@@ -9,7 +9,7 @@ const selectPostByIdQuery = async ( idUser, idPost ) => {
 
         const [posts] = await connection.query(
             `
-            SELECT P.id, P.idUser, O.username, P.image, P.text, SUM(IFNULL(U.vote = 1, 0)) AS likes, P.createdAt
+            SELECT P.id, P.idUser, O.username, P.image, P.text, SUM(IFNULL(U.vote = 1, 0)) AS likes, P.idUser = ? AS owner, BIT_OR(U.idUser = ? AND U.vote = 1) AS likedByMe, P.createdAt
             FROM posts P
             LEFT JOIN users O
             ON P.idUser = O.id
@@ -18,7 +18,7 @@ const selectPostByIdQuery = async ( idUser, idPost ) => {
             WHERE P.id = ?
             GROUP BY P.id
             `,
-            [idUser, idUser, idPost]
+            [idUser, idPost, idUser]
         );
 
         if (posts.length < 1) {
