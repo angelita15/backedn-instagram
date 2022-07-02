@@ -11,8 +11,6 @@ async function main() {
         await connection.query('DROP TABLE IF EXISTS posts');
         await connection.query('DROP TABLE IF EXISTS users');
 
-
-
         console.log('Creando tablas...');
 
         await connection.query(`
@@ -21,7 +19,6 @@ async function main() {
                 email VARCHAR(100) UNIQUE NOT NULL,
                 username VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
@@ -33,7 +30,6 @@ async function main() {
                 FOREIGN KEY (idUser) REFERENCES users(id),
                 text VARCHAR(280) NOT NULL,
                 image VARCHAR(100),
-                modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         `);
@@ -41,15 +37,11 @@ async function main() {
         await connection.query(`
         CREATE TABLE userVotes (
             id INTEGER PRIMARY KEY AUTO_INCREMENT,
-            idUser INTEGER NOT NULL,
-            idPost INTEGER NOT NULL,
-            FOREIGN KEY (idUser) REFERENCES users(id),
-            FOREIGN KEY (idPost) REFERENCES posts(id),
             vote BOOLEAN DEFAULT true,
+            idUser INTEGER NOT NULL,
+            FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
+            idPost INTEGER NOT NULL,
             FOREIGN KEY (idPost) REFERENCES posts (id) ON DELETE CASCADE,
-            FOREIGN KEY (idPost) REFERENCES posts (id) ON DELETE CASCADE,
-            modifiedAt DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-            
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
 
