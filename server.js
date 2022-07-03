@@ -59,12 +59,15 @@ app.get('/posts/:idPost', authUserPost, getPost);
 /* ###### Endpoints Likes  ########*/
 
 const newLike = require('./controllers/likes');
-const deletePost = require('./controllers/posts/deletePost');
 
 // Add or remove like //
 app.post('/posts/:idPost/like', authUser, postExist, newLike);
 
-// Borrar un post.
+/* ###### Endpoints Delete  ########*/
+
+const deletePost = require('./controllers/posts/deletePost');
+
+// Delete a post //
 app.delete('/posts/:idPost', authUser, postExist, deletePost);
 
 /* ###### Middlewares Error ########*/
