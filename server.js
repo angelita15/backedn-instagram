@@ -28,6 +28,7 @@ app.use(
 
 const authUser = require('./middlewares/authUser');
 const postExist = require('./middlewares/postExist');
+const authUserPost = require('./middlewares/authUserPosts');
 
 /* ###### Endpoints USERS  ########*/
 
@@ -50,23 +51,24 @@ const { newPost, getPost, listPosts } = require('./controllers/posts/');
 app.post('/posts', authUser, newPost);
 
 // We get all the posts //
-app.get('/posts', listPosts);
+app.get('/posts', authUserPost, listPosts);
 
 // We obtain a specific post with an ID //
-app.get('/posts/:idPost', getPost);
+app.get('/posts/:idPost', authUserPost, getPost);
 
 /* ###### Endpoints Likes  ########*/
 
 const newLike = require('./controllers/likes');
-const deletePost = require('./controllers/posts/deletePost');
 
 // Add or remove like //
 app.post('/posts/:idPost/like', authUser, postExist, newLike);
 
+/* ###### Endpoints Delete  ########*/
 
-// Borrar un post.
-app.delete('/posts/:idPost', authUser, postExist, deletePost)
+const deletePost = require('./controllers/posts/deletePost');
 
+// Delete a post //
+app.delete('/posts/:idPost', authUser, postExist, deletePost);
 
 /* ###### Middlewares Error ########*/
 app.use((err, req, res, next) => {
